@@ -1,12 +1,18 @@
-var express = require('express')
-
-var app = express()
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
-  dialect: 'sqlite',
-  storage: 'data/juiceshop.sqlite'
-});
-
-app.post('/login', function (req, res) {
-    sequelize.query('SELECT * FROM Products WHERE name LIKE ' +  req.body.username);
-  })
+using (StreamReader sr = new StreamReader(txtFile.Text))
+  {
+    string s = sr.ReadToEnd();
+    string query = "SELECT email FROM employees WHERE name = @name";
+    using (SqlConnection conn = new SqlConnection(connString))
+    {
+      conn.Open();
+      SqlCommand command = new SqlCommand(query, conn);
+      command.Parameters.AddWithValue("@name", name);
+      using (SqlDataReader reader = command.ExecuteReader())
+      {
+        while (reader.Read())
+        {
+          Console.WriteLine("{0}", reader[0]);
+        }
+      }
+    }
+  }
